@@ -1,0 +1,67 @@
+Secund: RTC/RTP => 120k/120V
+Zb = Sb/(raiz(3)*VL) ----------- Ib = Sb/(raiz(3)*VL)
+30 a mais, raiz(3) maior
+se tiver na AT e for pra BT -- -30 +30
+se tiver na BT e for pra AT -- +30 -30
+
+DIAG TRIF: meio com de baixo, primeiro com o meio e ultimo com o meio no delta. Y não soma.
+P/ CORRENTE:
+Acha primeiro do D (Trafo), quando achar no Y, DIV IAT,BR por raiz(3) e depois MULT por raiz(3) pra outra IAT,BT.
+
+Acha primeiro do Y, quando achar no D, MULT IAT,BR por raiz(3) e depois DIV por raiz(3) pra outra IAT,BT.
+
+## Dimensione os tcs e case-os: FT=1,2 e prec=10%:
+IPBT,AT - o mais baixo escolhe o RTC DIRETO
+acha IAT,BT dividindo por RTC escolhido
+RTC 2 - Ip/(Iat,bt e raiz de 3)
+Ibt,at = Ip/RTC x raiz(3)
+multiplicar 1,2 pelo rtc escolhido > IP
+
+## Ajuste Imin e D:
+D = Ecas + 2 ETC + ECTSC + M
+- Ecasamento = Iop/IR
+- Iop = IL(∆)2 - IL(Y)2
+- IR = (IL(∆)2 + IL(Y)2)/2
+IOP > K*IR
+Ipickup = 2% * IAT,BR maior
+
+## MONOFASICO EM DELTA NAO TEM Ia0=0, I0=I1=I2=ICC1F/3 
+DEFASAR 30 GRAUS AT AD 30 DA BT
+BIFASICO NAO TEM IA0=0 E IA2 = -IA1 (raix(3)/2*icc1f) e nao tem Z0
+CUIDAR SE E INTERNO OU EXT, FAZER AS DUAS CONTRIBUICOES
+I0 = 1ang90/2*z1+z0, ia0 divisor de corrente pego o lado do trafo.
+
+## ajuste protecao perda excitacao:
+Xd e Xd', Zb, passa p ohm
+Raio 1: Zb/2 ------ Raio 2: Xd/2 ------- Centro 1: (Zb+Xd')/2 ----- Centro 2: (Xd+Xd')/2
+faz os dois circulos começando em cima juntos, puxa do meio o raio em diagonal (R1 e R2), no meio do menor puxa p esquerda (C1), no meio ou embaixo do menor puxa p esquerda (C2), puxa p direita bem de cima (Xd'/2) e de baixo de cada (Zb e Xd). 
+
+## Demonstre que para corrente de carga nominal o rele nao opera.
+Iop e IR, faz k = iop/ir tem que ser maior que 10% p operar.
+
+## TC sem erros, iop p faltas ICC3F em F1 e F2:
+ICC3F = VF/Z1 X Ib
+i1,2 = Icc3F/RTC
+PRA FALTA EXT NAO DEVE OPERAR IOP=0
+
+## Erro +-5% dos tcs e calcule o ajuste de corrente p rele 87G nao opere p falta ext:
+Pega I que foi achada pela divisao com rtc, faz um I +- (I*5)/100
+Pega os resultados e faz Iop
+
+## Erro 10%, demonst q o rele opera p falta 3f em f1 (int) e nao p f2 (ext):
+
+faz normal com 10%, iopF2 diminui um do outro,  iopF1 um valor e zero pq nao passa corrente na esq da falta.
+
+## Correntes Icc, monofasica e trif, faz os diagramas sem esquecer do delta na seq zero, passar p at e bt, faz curto nas duas barras.
+
+## USA 180 OU MUDA SENTIDO DA CORRENTE, A PRIMEIRA VAI EM DIRECAO AO CC
+
+Ynd1 = alta em Y aterrado, baixa em ∆ atrasada em 30 graus 
+- ia = IA - IC
+Ynd11 = alta em Y aterrado, baixa atrasada (11*30) 330 graus da alta ou 30 graus adiantado
+- ia = IA - IB
+Dyn1 = Delta em alta, baixa em y aterrado atrasado em 30
+- ia = IA - IB
+ALTA ADIANTADA FICA Ia P BAIXO
+
+****EM DELTA e CORRENTE DE LINHA

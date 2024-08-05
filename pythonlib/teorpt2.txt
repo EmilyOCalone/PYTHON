@@ -1,0 +1,75 @@
+1 - Na energizacao, o transformador pode sofrer com alta correntes de inrush, as quais podem causar a atuacao indevida da protecao diferencial. Que metodo e usado para evitar que isto ocorra.
+
+DOIS ESTAGIOS:
+- Low biased: Diminui as atuacoes indevidas causadas pelos erros de medicao com grandes correntes. Algoritmos baseados na forma de onda e a restricao de segunda harmonica garantem a nao atuacao por correntes de inrush. Bloqueio por quinta harmonica evita a operacao indevida em caso de TC saturado.
+- high instantaneous: fornece uma eliminacao muito rapida de faltas graves com uma alta corrente diferencial, independentemente de seus harmonicos.
+
+Para evitar que as altas correntes de inrush causem a atuacao indevida da protecao diferencial durante a energizacao do transformador, utiliza-se o bloqueio por segunda harmonica. Esse metodo e eficaz porque as correntes de inrush tem uma alta componente de segunda harmonica, enquanto as correntes de falta interna geralmente nao apresentam essa caracteristica.
+Os reles diferenciais modernos utilizam algoritmos que identificam a presenca de segunda harmonica nas correntes medidas. Quando a razao entre a segunda harmonica e a componente fundamental da corrente diferencial ultrapassa um valor pre-definido, o rele bloqueia a operacao, impedindo assim a atuacao indevida devido as correntes de inrush.
+
+################################################################################################################################################
+
+2 - A sobretensao pode causar a operacao indevida de um rele diferencial? Explique.
+
+Sim, a sobretensao pode causar a operacao indevida de um rele diferencial. A sobretensao pode resultar em um aumento significativo da corrente, que por sua vez pode ser interpretada erroneamente como uma falta interna pelo rele diferencial. Isso ocorre porque a protecao diferencial funciona comparando as correntes de entrada e saida do transformador. Se houver uma discrepancia consideravel, o rele pode disparar, acreditando que ha uma falha interna.
+Nos transformadores, a sobretensao pode levar a sobreexcitacao do nucleo, gerando correntes distorcidas com fortes componentes harmonicas, especialmente de terceira e quinta harmonicas. Essa distorcao pode afetar a precisao das medições de corrente feitas pelos Transformadores de Corrente (TCs), levando a uma falsa indicacao de falha pelo rele diferencial.
+Para mitigar esses efeitos e evitar a operacao indevida, reles diferenciais modernos utilizam algoritmos de deteccao de harmonicas. O bloqueio por segunda harmonica e uma tecnica comum usada para discriminar entre correntes de inrush e faltas reais. Alem disso, o bloqueio por quinta harmonica pode ser empregado para evitar operacao indevida em casos de saturacao dos TCs​.
+
+################################################################################################################################################
+
+3 - Qual o problema que a saturacao de TCs causa na protecao diferencial? Explique.
+
+A forma de onda da corrente medida por eles e distorcida, o que leva a erros na medicao das correntes diferenciais. Especificamente, a saturacao pode causar o seguinte problema:
+
+1. **Desbalanceamento de Correntes**:
+   - Durante a saturacao, a corrente medida pelo TC nao reflete com precisao a corrente real que esta passando pelo sistema.
+   - Isso resulta em um desbalanceamento entre as correntes de entrada e saida medidas pelos TCs, que sao usadas pelo rele diferencial para detectar falhas.
+   - Esse desbalanceamento pode ser erroneamente interpretado pelo rele diferencial como uma falha no sistema, levando a atuacao indevida do rele e ao desligamento desnecessario do transformador.
+
+2. **Erro devido a Altas Correntes de Falta**:
+   - Faltas de grande corrente, que geram altos niveis de corrente, podem levar os TCs a operarem em um ponto mais proximo da saturacao.
+   - Isso pode aumentar a corrente de excitacao de um dos TCs, exacerbando o problema do desbalanceamento e contribuindo para a operacao indevida do rele diferencial.
+
+3. **Impacto nas Configuracoes de Protecao**:
+   - O uso de restricoes variaveis e ajustes precisos no rele diferencial e necessario para garantir que ele possa diferenciar entre condicoes de saturacao dos TCs e reais situacoes de falha.
+   - A sensibilidade do rele deve ser ajustada para pequenas correntes de curto-circuito e para tolerar diferencas entre as correntes medidas em casos de saturacao.
+
+################################################################################################################################################
+
+4 - Para que e usado o bloqueio por quinta harmonica?
+
+O bloqueio por quinta harmonica e usado para evitar a operacao indevida do rele diferencial em casos de saturacao dos Transformadores de Corrente (TCs). A saturacao dos TCs pode introduzir componentes harmonicas significativas na corrente medida, especialmente a quinta harmonica. Para evitar que essas componentes causem disparos indevidos da protecao diferencial, o rele diferencial moderno e projetado para detectar a presenca de quinta harmonica e bloquear sua operacao quando um determinado limiar e ultrapassado.
+
+O bloqueio por quinta harmonica e utilizado para evitar a operacao indevida do rele diferencial em situacoes de sobreexcitacao do transformador. Durante a sobreexcitacao, a forma de onda da corrente pode apresentar forte presenca de harmonicas, especialmente a terceira e a quinta harmonica. A inibicao da operacao do rele nestas situacoes e baseada na relacao entre o quinto harmonico e o componente fundamental da corrente diferencial. Se a proporcao do quinto harmonico em relacao ao componente fundamental exceder um valor pre-determinado, o bloqueio e ativado, impedindo a atuacao indevida do rele.
+Em casos de niveis perigosos de sobretensao, que podem danificar o transformador, o bloqueio pode ser automaticamente eliminado se a relacao do quinto harmonico com o componente fundamental exceder um valor de parada especificado.
+
+################################################################################################################################################
+
+5 - A protecao diferencial e capaz de detectar falta entre espiras? Explique.
+
+Sim, a protecao diferencial e capaz de detectar falta entre espiras. A protecao diferencial mede a corrente eletrica de entrada e de saida do transformador. Em condicoes normais, as correntes de entrada e saida sao iguais. No entanto, em caso de falta entre espiras, havera uma diferenca entre essas correntes devido a corrente que circula pela falha. Essa diferenca sera detectada pela protecao diferencial, que ira atuar para proteger o transformador.
+De acordo com os documentos, as faltas internas, incluindo as faltas entre espiras, sao uma das principais razoes para a atuacao da protecao diferencial. A protecao diferencial funciona com base na comparacao das correntes medidas nos enrolamentos do transformador. Quando ha uma falta entre espiras, a corrente de operacao aumenta significativamente, o que faz com que o rele diferencial atue para isolar o transformador e prevenir danos maiores.
+
+################################################################################################################################################
+
+6 - Explique qual a diferenca entre o rele de imagem termica (ANSI 49) e Termometro (ANSI 26).
+
+O rele de imagem termica (ANSI 49) e uma protecao que visa proteger contra o sobreaquecimento do gerador. Este rele utiliza a modelagem termica do gerador, levando em conta as correntes de sequencia positiva e negativa, juntamente com as constantes de aquecimento e resfriamento, para estimar a temperatura interna do gerador. A operacao do rele e baseada na corrente de sequencia positiva e na corrente de sequencia negativa, ponderada pelo fator K, que considera o efeito das correntes de sequencia negativa.
+O rele dispara um alarme ou aciona a protecao quando a capacidade termica usada (TCU) atinge certos niveis predefinidos, proporcionando um alerta entre 50-99% da TCU e possuindo constantes de tempo ajustaveis, especialmente em casos de falha na refrigeracao.
+Utiliza um modelo matematico baseado nas correntes de sequencia positiva e negativa para estimar a temperatura interna do gerador. Ele calcula a temperatura atraves de um modelo de aquecimento e resfriamento.
+
+O termometro (ANSI 26) e um dispositivo utilizado para monitorar diretamente a temperatura de componentes especificos do gerador, como o enrolamento do estator, o nucleo ferromagnetico, e o rotor. Este dispositivo mede a temperatura real e fornece uma indicacao visual ou eletronica da mesma, alem de poder acionar alarmes ou sistemas de protecao quando a temperatura ultrapassa certos limites predefinidos. Mede diretamente a temperatura fisica de componentes especificos do gerador, como enrolamentos e nucleos.
+
+COLOCA DENTRO DO TRAFO UM SENSOR DE TEMP, MEDE A TEMP DO OLEO, COM ELA CONSEGUE SABER COMO TA, SE ESTA TENTO AQUECIMENTO OU NAO NO TRAFO.
+
+################################################################################################################################################
+
+7 - Explique  o que é sistema de transferência direta de disparo  e qual da 3 zonas ajustadas pode ser usada 
+R:
+Ocorre quando o rele remoto manda um sinal para o rele local que este deve abrir o disjuntor pois foi detectado uma falta a frente do relé remoto antes de ser detectado pelo rele local. pode ser ajustado a zona 1.
+
+################################################################################################################################################
+
+8 - Explique o sistema de transferencia de disparo por sobre alcance
+R:
+ocorre quando a segunda zona do rele remoto identifica uma falha e a zona 1 do rele local não, ocorre a comunicaçao do rele remoto para o rele correto para abertura do disjuntor, zona 2, tem a comunicação entre ambos e nao e necessaria temporizacao.
